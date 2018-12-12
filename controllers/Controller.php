@@ -1,9 +1,16 @@
 <?php
 
+/**
+ * Class Controller
+ * Base class for all the controllers, not advisable to edit this file...
+ */
 class Controller
 {
     var $m;
 
+    /**
+     * Controller constructor.
+     */
     function __construct() {
         require_once('../mustache/src/Mustache/Autoloader.php');
         Mustache_Autoloader::register();

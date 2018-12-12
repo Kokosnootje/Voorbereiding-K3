@@ -1,6 +1,11 @@
 <?php
 //File with helper functions to make my life easier :-D
 
+/**
+ * @param $data
+ * @return string
+ * Dumps nicely formed data on HTML page
+ */
 function d($data){
     if(is_null($data)){
         $str = "<i>NULL</i>";
@@ -32,26 +37,41 @@ function d($data){
     return $str;
 }
 
+/**
+ * @param $data
+ */
 function dnl($data){
     echo d($data) . "<br>\n";
 }
 
+/**
+ * @param $data
+ */
 function dump($data){
     echo dnl($data);
 }
 
+/**
+ * @param $data
+ */
 function dd($data){
     echo dnl($data);
     exit;
 }
 
+/**
+ * @param string $message
+ */
 function ddt($message = ""){
     echo "[" . date("Y/m/d H:i:s") . "]" . $message . "<br>\n";
 }
 
+/**
+ * @param $url
+ * @param bool $permanent
+ */
 function Redirect($url, $permanent = false)
 {
     header('Location: ' . $url, true, $permanent ? 301 : 302);
-
     exit();
 }

@@ -4,10 +4,11 @@ require_once('Controller.php');
 require_once('../model/User.php');
 
 class UserController extends Controller {
-    function __construct() {
-        parent::__construct();
-    }
 
+    /**
+     * method index
+     * The index function, shows all users in a file
+     */
     function index() {
         $users = User::all();
         foreach ($users AS $u) {
@@ -22,6 +23,10 @@ class UserController extends Controller {
         echo $tpl->render(['users' => $users]);
     }
 
+    /**
+     * method edit
+     * Shows edit page for a user
+     */
     function edit() {
         $id = $_REQUEST['id'];
         $user = User::find($id);
@@ -36,6 +41,10 @@ class UserController extends Controller {
         echo $tpl->render(compact('user', 'userEducation', 'educations', 'groups'));
     }
 
+    /**
+     * method store
+     * Post after edit to store/ change user data
+     */
     function store() {
         if (!isset($_REQUEST['id']))
             die('For the store function, the ID should exist');
