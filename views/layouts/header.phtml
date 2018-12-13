@@ -9,14 +9,14 @@
 
      </head>
      <body>
-     {{> layouts/menu }}
+     <?php require_once('../views/layouts/menu.phtml'); ?>
 
      <div class="container-fluid mt-4">
-         {{#messages.success}}
+         <?php if (isset($messages['success'])) { ?>
              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                 {{messages.success}}
+                 <?= $messages['success'] ?>
                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
              </div>
-         {{/messages.success}}
+         <?php } ?>

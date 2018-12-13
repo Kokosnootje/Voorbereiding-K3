@@ -1,7 +1,12 @@
 <?php
 
 require_once( 'DatabaseSettings.php' );
-//Database class to connect to database and fire queries
+
+/**
+ * Class Database
+ * connection to the database and basic usage
+ * Best not to touch this file
+ */
 class Database extends DatabaseSettings
 {
     var $classQuery;
@@ -10,7 +15,9 @@ class Database extends DatabaseSettings
     var $errno = '';
     var $error = '';
 
-    // Connects to the database
+    /**
+     * Database constructor.
+     */
     function __construct()
     {
         // Load settings from parent class
@@ -26,6 +33,9 @@ class Database extends DatabaseSettings
         $this->link = new mysqli( $host , $user , $pass , $name );
     }
 
+    /**
+     * Database destructor
+     */
     function __destruct() {
         $this->close();
     }
@@ -37,6 +47,7 @@ class Database extends DatabaseSettings
         return $this->link->query( $query );
     }
 
+    //Escape data
     function escapeString( $query )
     {
         return $this->link->escape_string( $query );
@@ -48,6 +59,7 @@ class Database extends DatabaseSettings
         return $result->num_rows;
     }
 
+    //Get the last inserted ID
     function lastInsertedID()
     {
         return $this->link->insert_id;
@@ -89,6 +101,7 @@ class Database extends DatabaseSettings
         $this->link->close();
     }
 
+    //Return the current error number and message
     function sql_error()
     {
         if( empty( $error ) )

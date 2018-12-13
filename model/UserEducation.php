@@ -7,11 +7,15 @@ class UserEducation extends Model
 {
     static $table = 'user_educations';
 
-    function __construct() {
-        parent::__construct(static::$table);
-    }
-
+    /**
+     * Connection to the education
+     * @return mixed
+     */
     function educations() {
         return $this->hasOne('Education', 'education_id', 'id');
+    }
+
+    function users() {
+        return $this->hasOne('User', 'user_id', 'id');
     }
 }

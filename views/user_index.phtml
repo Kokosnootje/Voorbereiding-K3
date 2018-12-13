@@ -1,5 +1,5 @@
 <!-- Load the header -->
-{{> layouts/header }}
+<?php require_once('../views/layouts/header.phtml'); ?>
 
 <!-- Start of the page -->
 <h3>Gebruikers</h3>
@@ -18,20 +18,20 @@ Hier kan je gebruikers zien en wijzigingen.
   </tr>
   </thead>
      <tbody>
-        {{#users}}
+        <?php foreach ($users AS $user) { ?>
         <tr>
-            <td>{{ firstname }}</td>
-            <td>{{ lastname }}</td>
-            <td>{{ class }}</td>
-            <td>{{ date_of_birth }}</td>
-            <td> {{ education }}</td>
+            <td><?= $user->firstname ?></td>
+            <td><?= $user->lastname ?></td>
+            <td><?= $user->class ?></td>
+            <td><?= $user->date_of_birth ?></td>
+            <td> <?= $user->education ?></td>
             <td>
-                <a href="/?page=user&action=edit&id={{ id }}" class="btn btn-outline-primary btn-sm"> Edit </a>
+                <a href="/?page=user&action=edit&id=<?= $user->id ?>" class="btn btn-outline-primary btn-sm"> Edit </a>
             </td>
         </tr>
-        {{/users}}
+        <?php } ?>
      </tbody>
  </table>
 
     <!-- Load the footer -->
-    {{> layouts/footer }}
+<?php require_once('../views/layouts/footer.phtml'); ?>

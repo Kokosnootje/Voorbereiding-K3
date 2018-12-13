@@ -1,62 +1,62 @@
 -- Run this file into a clean/ empty Database
 
 CREATE TABLE roles (
-	id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-	name character varying(255),
-	CONSTRAINT roles_pk PRIMARY KEY (id)
+  id integer UNSIGNED NOT NULL AUTO_INCREMENT,
+  name character varying(255),
+  CONSTRAINT roles_pk PRIMARY KEY (id)
 );
 
 CREATE TABLE users (
-	id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-	firstname character varying(255) NOT NULL,
-	lastname character varying(255) NOT NULL,
-	class character varying(10) NOT NULL,
-	date_of_birth date,
-	role_id integer UNSIGNED,
-	CONSTRAINT users_pk PRIMARY KEY (id),
-	CONSTRAINT users_role_id_fk FOREIGN KEY (role_id)
-	REFERENCES roles (id)
-	ON UPDATE NO ACTION ON DELETE NO ACTION
+  id integer UNSIGNED NOT NULL AUTO_INCREMENT,
+  firstname character varying(255) NOT NULL,
+  lastname character varying(255) NOT NULL,
+  class character varying(10) NOT NULL,
+  date_of_birth date,
+  role_id integer UNSIGNED,
+  CONSTRAINT users_pk PRIMARY KEY (id),
+  CONSTRAINT users_role_id_fk FOREIGN KEY (role_id)
+  REFERENCES roles (id)
+  ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 CREATE TABLE educations (
-	id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-	name character varying(255) NOT NULL,
-	CONSTRAINT educations_pk PRIMARY KEY (id)
+  id integer UNSIGNED NOT NULL AUTO_INCREMENT,
+  name character varying(255) NOT NULL,
+  CONSTRAINT educations_pk PRIMARY KEY (id)
 );
 
 CREATE TABLE user_educations (
-	id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-	user_id integer UNSIGNED NOT NULL,
-	education_id integer UNSIGNED NOT NULL,
-	CONSTRAINT user_educations_pk PRIMARY KEY (id) ,
-	CONSTRAINT user_educations_user_id_fk FOREIGN KEY (user_id)
-	REFERENCES users (id)
-	ON UPDATE NO ACTION ON DELETE NO ACTION,
-	CONSTRAINT user_educations_education_id_fk FOREIGN KEY (education_id)
-	REFERENCES educations (id)
-	ON UPDATE NO ACTION ON DELETE NO ACTION
+  id integer UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id integer UNSIGNED NOT NULL,
+  education_id integer UNSIGNED NOT NULL,
+  CONSTRAINT user_educations_pk PRIMARY KEY (id) ,
+  CONSTRAINT user_educations_user_id_fk FOREIGN KEY (user_id)
+  REFERENCES users (id)
+  ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT user_educations_education_id_fk FOREIGN KEY (education_id)
+  REFERENCES educations (id)
+  ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 CREATE TABLE courses (
-	id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-	name character varying(255) NOT NULL,
-	CONSTRAINT courses_pk PRIMARY KEY (id)
+  id integer UNSIGNED NOT NULL AUTO_INCREMENT,
+  name character varying(255) NOT NULL,
+  CONSTRAINT courses_pk PRIMARY KEY (id)
 );
 
 CREATE TABLE user_course_grades (
-	id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-	user_id integer UNSIGNED NOT NULL,
-	course_id integer UNSIGNED NOT NULL,
-	grade_date date NOT NULL,
-	grade integer NOT NULL,
-	CONSTRAINT user_course_grades_pk PRIMARY KEY (id),
-	CONSTRAINT user_course_grades_user_id_fk FOREIGN KEY (user_id)
-	REFERENCES users (id)
-	ON UPDATE NO ACTION ON DELETE NO ACTION,
-	CONSTRAINT user_course_grades_course_id_fk FOREIGN KEY (course_id)
-	REFERENCES courses (id)
-	ON UPDATE NO ACTION ON DELETE NO ACTION
+  id integer UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id integer UNSIGNED NOT NULL,
+  course_id integer UNSIGNED NOT NULL,
+  grade_date date NOT NULL,
+  grade integer NOT NULL,
+  CONSTRAINT user_course_grades_pk PRIMARY KEY (id),
+  CONSTRAINT user_course_grades_user_id_fk FOREIGN KEY (user_id)
+  REFERENCES users (id)
+  ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT user_course_grades_course_id_fk FOREIGN KEY (course_id)
+  REFERENCES courses (id)
+  ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 INSERT INTO roles VALUES (1, 'Leerling');
@@ -107,5 +107,12 @@ INSERT INTO educations VALUES (3, 'SPW');
 INSERT INTO educations VALUES (4, 'Master of School Management');
 INSERT INTO educations VALUES (5, 'Geen opleiding');
 
-
-
+INSERT INTO user_educations VALUES (1, 29, 4);
+INSERT INTO user_educations VALUES (2, 21, 1);
+INSERT INTO user_educations VALUES (3, 22, 1);
+INSERT INTO user_educations VALUES (4, 23, 1);
+INSERT INTO user_educations VALUES (5, 24, 1);
+INSERT INTO user_educations VALUES (6, 25, 1);
+INSERT INTO user_educations VALUES (7, 26, 1);
+INSERT INTO user_educations VALUES (8, 27, 1);
+INSERT INTO user_educations VALUES (9, 28, 1);

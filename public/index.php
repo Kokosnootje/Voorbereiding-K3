@@ -1,4 +1,7 @@
 <?php
+/**
+ * This is the main index file, best not to touch this...
+ */
 
 session_start();
 require_once('../lib/helper_functions.php');

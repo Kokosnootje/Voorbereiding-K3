@@ -1,0 +1,38 @@
+<!-- Load the header -->
+<?php require_once('../views/layouts/header.phtml'); ?>
+
+<!-- Start of the page -->
+<h3>Kies een klas</h3>
+Voor welke klas en welk vak wil je cijfers invoeren?
+
+
+<div class="col-6">
+    <form method="post" action="/?page=grade&action=addgrade">
+        <div class="row">
+            <div class="form-group col-6">
+                <label for="class">Groep</label>
+                <select class="form-control" name="class" id="class">
+                    {{#classes}}
+                    <option value="{{.}}">Groep {{.}}</option>
+                    {{/classes}}
+                </select>
+            </div>
+            <div class="form-group col-6">
+                <label for="course">Vak</label>
+                <select class="form-control" name="course" id="course">
+                    {{#courses}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/courses}}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-3">
+                <button class="form-control btn btn-sm btn-outline-primary">Cijfers invoeren</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Load the footer -->
+<?php require_once('../views/layouts/footer.phtml'); ?>s

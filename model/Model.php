@@ -21,6 +21,7 @@ class Model
         static::$table = $table;
         return;
     }
+
     function setDB($DB) {
         static::$DB = $DB;
         return;
@@ -106,20 +107,23 @@ class Model
         return $model;
     }
 
-    public static function whereOne($key, $operator, $value) {
-        $obj = static::where($key, $operator, $value);
+    public static function whereOne($array) {
+        $obj = static::where($array);
         if (!empty($obj))
             return $obj[0];
 
         return null;
     }
 
-    public static function where($key, $operator, $value) {
+    public static function where($array) {
         $model = static::childClass();
-        $where = " WHERE $key $operator '$value'";
+        $where = ' WHERE 1 = 1';
+        foreach ($array AS $a)
+            $where .= " AND $a[0] $a[1] $a[2]";
 
+        $db = new Database();
         $qry = "SELECT id FROM ".static::$table.$where;
-        $allData = static::$DB->query($qry)->fetch_all();
+        $allData = $db->query($qry)->fetch_all();
 
         $retData = [];
         foreach ($allData AS $obj)
@@ -153,14 +157,14 @@ class Model
     }
 
     public function hasOne($model, $primary_key, $foreign_key) {
-        return $model::whereOne($foreign_key,'=', $this->$primary_key);
+        return $model::whereOne([[$foreign_key,'=', $this->$primary_key]]);
     }
 
     public function BelongsTo($model, $primary_key, $foreign_key) {
-        return $model::whereOne($this->$primary_key, '=', $foreign_key);
+        return $model::whereOne([[$this->$primary_key, '=', $foreign_key]]);
     }
 
     public function hasMany($model, $primary_key, $foreign_key) {
-        return $model::where($foreign_key,'=', $this->$primary_key);
+        return $model::where([[$foreign_key,'=', $this->$primary_key]]);
     }
 }
