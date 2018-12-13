@@ -12,7 +12,6 @@ class Model
     static $table;
 
     function __construct($table) {
-
         $this->setTable($table);
         $this->setDB(new Database());
     }
@@ -64,17 +63,24 @@ class Model
     }
 
     public function saveNew() {
-        $modelColumns = $this->getColumns();
+        $modelColumns = $this->getAllColumnInformation();
         $cols = [];
         $values = [];
-        foreach ($modelColumns AS $c) {
+        foreach ($modelColumns AS $column) {
+            $c = $column[0];
             if ($c != 'id') {
                 $cols[] = $c;
-                $values[] = $this->$c;
+                if (strpos(strtolower($column[1]), 'int') !== false) {
+                    $values[] = $this->$c;
+                } else {
+                    $value = $this->$c;
+                    $values[] = "'$value'";
+                }
             }
         }
 
         $qry = "INSERT INTO ".$this->getTable()." (".implode(',', $cols).") VALUES (".implode(',', $values).");";
+
         static::$DB->query($qry);
         return $this->getDB()->lastInsertedID();
     }

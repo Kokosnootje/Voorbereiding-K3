@@ -33,4 +33,10 @@ Do not touch this folder, it holds the initial mysql-database file
 /views
 This folder holds the layout files (rendered with mustache)
 
+#Notice to all who use this
+##This software is for educational purpose only, do not use it in anyway in a live environment for it is not safe!
+This software was written by me (Michiel Auerbach) for the use of the students of the Techniek College Rotterdam (TCR)
+to study/ learn for their exams. This software has limited to zero security checks or in anyway is safe to
+use in any environment other then running on your own laptop/ SOHO location without direct internet access to the
+software application. 
 

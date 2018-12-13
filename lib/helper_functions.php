@@ -60,6 +60,17 @@ function dd($data){
 }
 
 /**
+ * @param $message
+ * Store a session message to be shown later on.
+ */
+function StoreMessage($message) {
+    $key = $message[0];
+    $msg = $message[1];
+
+    $_SESSION['messages'][$key] = $msg;
+}
+
+/**
  * @param string $message
  */
 function ddt($message = ""){

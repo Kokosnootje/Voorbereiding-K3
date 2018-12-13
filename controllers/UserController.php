@@ -66,7 +66,7 @@ class UserController extends Controller {
         $ue->education_id = $data['education'];
         $ue->save();
 
-        $_SESSION['messages']['success'] = 'Gebruiker met succes opgeslagen';
-        return redirect('/?page=user');
+        StoreMessage(['success', 'Gebruiker met succes opgeslagen']);
+        return Redirect('/?page=user');
     }
 }

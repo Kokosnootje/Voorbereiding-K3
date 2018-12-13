@@ -5,24 +5,23 @@
 <h3>Kies een klas</h3>
 Voor welke klas en welk vak wil je cijfers invoeren?
 
-
 <div class="col-6">
-    <form method="post" action="/?page=grade&action=addgrade">
+    <form method="post" action="/?page=grade&action=create">
         <div class="row">
             <div class="form-group col-6">
                 <label for="class">Groep</label>
                 <select class="form-control" name="class" id="class">
-                    {{#classes}}
-                    <option value="{{.}}">Groep {{.}}</option>
-                    {{/classes}}
+                    <?php foreach ($classes AS $class) { ?>
+                    <option value="<?= $class ?>">Groep <?= $class ?></option>
+                    <?php } ?>
                 </select>
             </div>
             <div class="form-group col-6">
                 <label for="course">Vak</label>
                 <select class="form-control" name="course" id="course">
-                    {{#courses}}
-                    <option value="{{id}}">{{name}}</option>
-                    {{/courses}}
+                    <?php foreach ($courses AS $course) { ?>
+                        <option value="<?= $course->id ?>"><?= $course->name ?></option>
+                    <?php } ?>
                 </select>
             </div>
         </div>
@@ -35,4 +34,4 @@ Voor welke klas en welk vak wil je cijfers invoeren?
 </div>
 
 <!-- Load the footer -->
-<?php require_once('../views/layouts/footer.phtml'); ?>s
+<?php require_once('../views/layouts/footer.phtml'); ?>

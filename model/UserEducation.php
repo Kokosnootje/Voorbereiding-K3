@@ -8,6 +8,12 @@ class UserEducation extends Model
     static $table = 'user_educations';
 
     /**
+     * Class constructor
+     */
+    function __construct() {
+        parent::__construct(static::$table);
+    }
+    /**
      * Connection to the education
      * @return mixed
      */
