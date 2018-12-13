@@ -19,8 +19,7 @@ class UserController extends Controller {
             }
         }
 
-        $tpl = $this->m->loadTemplate('user');
-        echo $tpl->render(['users' => $users]);
+        $this->showTemplate('user_index', compact('users'));
     }
 
     /**
@@ -36,9 +35,7 @@ class UserController extends Controller {
 
         $educations = Education::all();
         $groups = [1,2,3,4,5,6,7,8];
-
-        $tpl = $this->m->loadTemplate('user.edit');
-        echo $tpl->render(compact('user', 'userEducation', 'educations', 'groups'));
+        $this->showTemplate('user_edit', compact('user', 'educations', 'groups', 'userEducation'));
     }
 
     /**

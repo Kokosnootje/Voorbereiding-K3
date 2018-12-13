@@ -13,7 +13,6 @@ class HomeController extends Controller {
      * shows the home-template (/views/home.mustache)
      */
     function index() {
-        $tpl = $this->m->loadTemplate('home');
-        echo $tpl->render(['planet' => 'world']);
+        $this->showTemplate('home');
     }
 }
