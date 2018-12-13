@@ -24,9 +24,6 @@ This folder contains helper and Database class files
 /model
 This folder contains the models (references to database tables)
 
-/mustache
-Do not touch this folder, it is an external library for layout/setup. 
-
 /public
 This folder holds all publicly accessable files (index.php, images, css, js, etc.)
 
