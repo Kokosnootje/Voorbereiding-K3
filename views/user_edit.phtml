@@ -9,17 +9,17 @@
         <div class="row">
             <div class="form-group col-6">
                 <label for="firstname">Voornaam</label>
-                <input type="text" name="firstname" value="<?= $user->firstname?>" class="form-control"/>
+                <input required type="text" name="firstname" value="<?= $user->firstname?>" class="form-control"/>
             </div>
             <div class="form-group col-6">
                 <label for="lastname">Achternaam</label>
-                <input type="text" name="lastname" value="<?= $user->lastname?>" class="form-control"/>
+                <input required type="text" name="lastname" value="<?= $user->lastname?>" class="form-control"/>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-6">
                 <label for="class">Klas/groep</label>
-                <select name="class" id="class" class="form-control">
+                <select required name="class" id="class" class="form-control">
                     <?php foreach ($groups AS $group) { ?>
                         <option value="<?= $group ?>" <?php if ($user->class == $group) { ?> selected <?php } ?>><?= $group ?></option>
                     <?php } ?>
@@ -27,13 +27,13 @@
             </div>
             <div class="form-group col-6">
                 <label for="date_of_birth">Geboorte datum</label>
-                <input type="date" name="date_of_birth" value="<?= $user->date_of_birth?>" class="form-control"/>
+                <input required type="date" name="date_of_birth" value="<?= $user->date_of_birth?>" class="form-control"/>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-6">
                 <label for="class">Klas/groep</label>
-                <select name="education" id="education" class="form-control">
+                <select required name="education" id="education" class="form-control">
                     <option disabled selected value=""> - Kies - </option>
                     <?php foreach ($educations AS $education) { ?>
                         <option
