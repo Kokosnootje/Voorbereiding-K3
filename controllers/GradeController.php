@@ -11,15 +11,31 @@ require_once('../model/User.php');
  */
 class GradeController extends Controller {
 
+    var $classes = [1,2,3,4,5,6,7,8];
     /**
      * method index
      * shows the home-template (/views/grade.index.mustache)
      */
     function index() {
-        $classes = [1,2,3,4,5,6,7,8];
         $courses = Course::all();
-
+        $classes = $this->classes;
         $this->showTemplate('grade_index', compact('classes', 'courses'));
+    }
+
+    function show() {
+        $classes = $this->classes;
+        $this->showTemplate('grade_show', compact('classes'));
+    }
+
+    function showclass() {
+        $class = $_GET['id'];
+        if (!in_array($class, $this->classes))
+            die('You did not specify a legal./ existing class...');
+
+        $courses = Course::all();
+        $students = User::where([['class', '=', $class], ['role_id', '=', 1]]);
+
+        $this->showTemplate('grade_showclass', compact('class', 'courses', 'students'));
     }
 
     function create() {

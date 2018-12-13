@@ -2,6 +2,7 @@
 
 require_once ('Model.php');
 require_once('UserEducation.php');
+require_once('UserCourseGrade.php');
 require_once('Education.php');
 
 class User extends Model
@@ -19,4 +20,7 @@ class User extends Model
         return $this->hasOne('UserEducation', 'id', 'user_id');
     }
 
+    public function user_course_grades() {
+        return $this->hasMany('UserCourseGrade', 'id', 'user_id');
+    }
 }

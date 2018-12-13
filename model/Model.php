@@ -167,7 +167,7 @@ class Model
     }
 
     public function BelongsTo($model, $primary_key, $foreign_key) {
-        return $model::whereOne([[$this->$primary_key, '=', $foreign_key]]);
+        return $model::whereOne([[$primary_key, '=', $this->$foreign_key]]);
     }
 
     public function hasMany($model, $primary_key, $foreign_key) {
