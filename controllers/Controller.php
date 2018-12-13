@@ -8,22 +8,15 @@ class Controller
 {
     var $m;
     var $viewsFolder = '../views';
+    var $messages;
 
     /**
      * Controller constructor.
      */
     function __construct() {
-        require_once('../mustache/src/Mustache/Autoloader.php');
-        Mustache_Autoloader::register();
-
         $msg = null;
         if (isset($_SESSION['messages']) && is_array($_SESSION['messages']) && count($_SESSION['messages']) > 0)
-            $msg = $_SESSION['messages'];
-
-        $this->m = new Mustache_Engine(array(
-            'helpers' => ['messages' => $msg],
-            'loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/../views'),
-        ));
+            $this->messages = $_SESSION['messages'];
 
         $_SESSION['messages'] = null;
 
@@ -49,6 +42,8 @@ class Controller
 
         foreach ($vars AS $key => $value)
             $$key = $value;
+
+        $messages = $this->messages;
 
         if (file_exists($viewFile))
             require_once($viewFile);
