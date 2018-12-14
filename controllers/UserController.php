@@ -19,7 +19,7 @@ class UserController extends Controller {
             }
         }
 
-        $this->showTemplate('user_index', compact('users'));
+        $this->showTemplate('user.index', compact('users'));
     }
 
     /**
@@ -35,7 +35,7 @@ class UserController extends Controller {
 
         $educations = Education::all();
         $groups = [1,2,3,4,5,6,7,8];
-        $this->showTemplate('user_edit', compact('user', 'educations', 'groups', 'userEducation'));
+        $this->showTemplate('user.edit', compact('user', 'educations', 'groups', 'userEducation'));
     }
 
     /**

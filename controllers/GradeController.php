@@ -19,12 +19,12 @@ class GradeController extends Controller {
     function index() {
         $courses = Course::all();
         $classes = $this->classes;
-        $this->showTemplate('grade_index', compact('classes', 'courses'));
+        $this->showTemplate('grade.index', compact('classes', 'courses'));
     }
 
     function show() {
         $classes = $this->classes;
-        $this->showTemplate('grade_show', compact('classes'));
+        $this->showTemplate('grade.show', compact('classes'));
     }
 
     function showclass() {
@@ -35,7 +35,7 @@ class GradeController extends Controller {
         $courses = Course::all();
         $students = User::where([['class', '=', $class], ['role_id', '=', 1]]);
 
-        $this->showTemplate('grade_showclass', compact('class', 'courses', 'students'));
+        $this->showTemplate('grade.showclass', compact('class', 'courses', 'students'));
     }
 
     function create() {
@@ -43,7 +43,7 @@ class GradeController extends Controller {
         $course = Course::find($_REQUEST['course']);
         $students = User::where([['class', '=', $class], ['role_id', '=', 1]]);
 
-        $this->showTemplate('grade_create', compact('class', 'course', 'students'));
+        $this->showTemplate('grade.create', compact('class', 'course', 'students'));
     }
 
     function store() {
