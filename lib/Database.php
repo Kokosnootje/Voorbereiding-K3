@@ -31,6 +31,9 @@ class Database extends DatabaseSettings
 
         // Connect to the database
         $this->link = new mysqli( $host , $user , $pass , $name );
+
+        //Set the charset...
+        mysqli_set_charset($this->link, 'utf8mb4');
     }
 
     /**
@@ -44,7 +47,9 @@ class Database extends DatabaseSettings
     function query( $query )
     {
         $this->classQuery = $query;
-        return $this->link->query( $query );
+        $value = $this->link->query( $query );
+
+        return $value;
     }
 
     //Escape data
@@ -109,6 +114,7 @@ class Database extends DatabaseSettings
             $errno = $this->link->errno;
             $error = $this->link->error;
         }
+
         return $errno . ' : ' . $error;
     }
 }

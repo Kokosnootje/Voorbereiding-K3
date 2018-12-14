@@ -42,7 +42,7 @@ class UserController extends Controller {
      * method store
      * Post after edit to store/ change user data
      */
-    function store() {
+    function update() {
         if (!isset($_REQUEST['id']))
             die('For the store function, the ID should exist');
 

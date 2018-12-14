@@ -49,15 +49,23 @@ class Model
 
     public function saveExisting($id) {
         $where = " WHERE id = ".$id;
-        $updateQry = "id = '".$id."'";
-        $modelColumns = $this->getColumns();
-        foreach ($modelColumns AS $c) {
+        $updateQry = "id = $id";
+
+        $modelColumns = $this->getAllColumnInformation();
+        foreach ($modelColumns AS $column) {
+            $c = $column[0];
             if ($c != 'id') {
-                $updateQry .= ", ".$c." = '".$this->$c."'";
+                $cols[] = $c;
+                if (strpos(strtolower($column[1]), 'int') !== false) {
+                    $updateQry .= ", " . $c . " = " . $this->$c;
+                } else {
+                    $updateQry .= ", " . $c . " = '" . $this->getDB()->escapeString($this->$c) . "'";
+                }
             }
         }
 
-        $this->getDB()->query("UPDATE ".$this->getTable()." SET ".$updateQry.$where);
+        $qry = "UPDATE ".$this->getTable()." SET ".$updateQry.$where;
+        $this->getDB()->query($qry);
 
         return true;
     }
@@ -73,7 +81,7 @@ class Model
                 if (strpos(strtolower($column[1]), 'int') !== false) {
                     $values[] = $this->$c;
                 } else {
-                    $value = $this->$c;
+                    $value = static::$DB->escapeString($this->$c);
                     $values[] = "'$value'";
                 }
             }
