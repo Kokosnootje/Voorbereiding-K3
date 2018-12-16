@@ -11,10 +11,12 @@
 7. Copy and paste the information into the database to have a first set ready.
 8. Point your webserver/ programm to the /public/index.php file and check if things work.
 
+To see if your installation works you can check if the usage is the same as on the test website: https://kerntaak3.tcr.mncr.nl
+
 ## Basic usage
 ### Routing
 The application does not have a web.php or routing file. Routing is done thru the URL with 2 GET-variables:
-* page=<Controller-name>
+* page=&lt;Controller-name&gt;
     * Specifying a page searches for that name in the controllers folder as controller
     * So page=user will execture/ fire up the UserController.php in /controllers
 * action=[method_name]
