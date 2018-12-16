@@ -2,9 +2,9 @@
 //File with helper functions to make my life easier :-D
 
 /**
+ * * Dumps nicely formed data on HTML page
  * @param $data
  * @return string
- * Dumps nicely formed data on HTML page
  */
 function d($data){
     if(is_null($data)){
@@ -60,8 +60,15 @@ function dd($data){
 }
 
 /**
+ * @param string $message
+ */
+function ddt($message = ""){
+    echo "[" . date("Y/m/d H:i:s") . "]" . $message . "<br>\n";
+}
+
+/**
+ * Store a session message to be shown in a next page/ session load
  * @param $message
- * Store a session message to be shown later on.
  */
 function StoreMessage($message) {
     $key = $message[0];
@@ -71,10 +78,15 @@ function StoreMessage($message) {
 }
 
 /**
- * @param string $message
+ * @param $post_var
+ * @param $data
+ * @return mixed
  */
-function ddt($message = ""){
-    echo "[" . date("Y/m/d H:i:s") . "]" . $message . "<br>\n";
+function Old($post_var, $data) {
+    if (isset($_POST[$post_var]))
+        return $_POST[$post_var];
+    else
+        return $data;
 }
 
 /**
@@ -85,4 +97,17 @@ function Redirect($url, $permanent = false)
 {
     header('Location: ' . $url, true, $permanent ? 301 : 302);
     exit();
+}
+
+/**
+ * Go back to the previous page, keep post-data (if method is post) store it in session
+ * @param $url
+ */
+function Back() {
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET')
+        $_SESSION['post_data'] = $_POST;
+
+    $url = $_SERVER['HTTP_REFERER'];
+
+    Redirect($url, false);
 }
