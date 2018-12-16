@@ -25,6 +25,37 @@ The application does not have a web.php or routing file. Routing is done thru th
 ```
 This will trigger the UserController and the edit function. You can add other variables which you can use with the PHP ```$_GET['id']``` command.
 
+## Models
+### Attribute methods
+You can add methods (functions) in the Model that will be attached to the attribute (as method, not variable) to the model-object.
+
+```c
+    Class User extends Model
+    {
+        function showNumberTwo() {
+            return 2;
+        }
+    }
+```
+The above function is a attribute-method on the $user-models. So you can use ```$user->showNumberTwo()``` in your code (mind the () on the end for Laravel users). This will result in '2' in this case since that is returned.
+
+### Relations
+The models that extend have sweet functions on getting connected models (like foreign keys in databases). There are three common functions you can use within a model to access the connected tables.
+* ```hasOne($model, $primary_key, $foreign_key),```
+    * This function returns the first instance of the connected ```$model``` using the ```$primary_key``` of the model that extends on the ```$foreign_key``` of the ```$model``` table
+    * ``` return $this->hasOne('UserEducation', 'id', 'user_id'); ```  
+* ```hasMany($model, $primary_key, $foreign_key),```
+    * This function returns an array with ALL the instances of the connected ```$model``` using the ```$primary_key``` of the model that extends on the ```$foreign_key``` of the ```$model``` table
+    * ``` return $this->hasMany('UserEducation', 'id', 'user_id'); ```  
+* ```belongsTo($model, $primary_key, $foreign_key)```
+    * This is the opposite of the hasOne, it will return the first instance of the connected ```$model``` using the ```$foreign_key``` of the model to connect to the ```$primary_key```
+    * ``` return $this->belongsTo('User', 'id', 'user_id');```
+    
+### Stacking model functions on relations
+You can directly address attributes of a connected (related) model. ```$user->role()->name``` will return the name of the role connected to the user.
+If you have an instance on your model that is another model, you can use the 'other' models attribute-methods on that model. This only works if the connection is a hasOne or belongsTo (those return one instance) it does not work on hasMany since that returns an array. 
+   
+
 ## Special functions
 In the /lib/ folder there is a helper_functions.php file, there are 3 handy-dandy functions for you to use.
 * ```Old($post_data, $variable)```
@@ -59,4 +90,3 @@ This software was written by me (Michiel Auerbach) for the use of the students o
 to study/ learn for their exams. This software has limited to zero security checks or in anyway is safe to
 use in any environment other then running on your own laptop/ SOHO location without direct internet access to the
 software application. 
-

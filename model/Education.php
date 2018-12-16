@@ -12,5 +12,4 @@ class Education extends Model
     function __construct() {
         parent::__construct(static::$table);
     }
-
 }
