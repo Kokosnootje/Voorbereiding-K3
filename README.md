@@ -1,19 +1,15 @@
-# TCR Kerntaak 3
+# TCR Kerntaak 3 voorbereiding - 2018/2019
 
-## Inleiding
-TCR Kerntaak 3 2018
+## Installation
 
-Download the git installation
-
-Setup an own database (name, user and password)
-Edit the file in /lib/DatabaseSettings.php
-add the name/user/password
-
-Open the database in an application of your choice (phpmyadmin/ sequel pro or e.d.)
-Open the file /sql/database_init.sql 
-copy and paste the information into the database to have a first set ready.
-
-Point your webserver/ programm to the /public/index.php file and check if things work.
+1. Download or clone the git installation
+2. Setup an own database (name, user and password)
+3. Edit the file in /lib/DatabaseSettings.php
+4. Change/ add the name/user/password
+5. Open the database in an application of your choice (phpmyadmin/ sequel pro or e.d.)
+6. Open the file /sql/database_init.sql 
+7. Copy and paste the information into the database to have a first set ready.
+8. Point your webserver/ programm to the /public/index.php file and check if things work.
 
 ## Basic usage
 ### Routing
