@@ -1,7 +1,5 @@
 # TCR Kerntaak 3 voorbereiding - 2018/2019
 
-[TOC]
-
 ## Installation
 
 1. Download or clone the git installation
