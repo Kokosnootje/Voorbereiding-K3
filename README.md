@@ -80,9 +80,9 @@ In the /lib/ folder there is a helper_functions.php file, there are 3 handy-dand
     * This folder holds all publicly accessable files (index.php, images, css, js, etc.)
 * /sql
     * Do not touch this folder, it holds the initial mysql-database file
+* /views
+    * Here are all the views in .phtml files. You can use PHP code in the views, but just for simple usages of showing information. 
 
-/views
-This folder holds the layout files (rendered with mustache)
 
 ## Notice to all who use this
 ### This software is for educational purpose only, do not use it in anyway in a live environment for it is not safe!
