@@ -1,3 +1,4 @@
 .idea
 vendor
 lib/DatabaseSettings.php
+.DS_Store
