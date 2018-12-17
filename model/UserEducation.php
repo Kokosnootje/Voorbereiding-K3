@@ -17,4 +17,8 @@ class UserEducation extends Model
     function users() {
         return $this->belongsTo('User', 'id', 'user_id');
     }
+
+    function educations() {
+        return $this->belongsTo('Education', 'id', 'education_id');
+    }
 }
