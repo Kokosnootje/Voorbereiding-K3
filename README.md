@@ -11,7 +11,7 @@
 7. Open the file /sql/database_init.sql 
 8. Copy and paste the information into the database to have a first set ready.
 9. Point your webserver/ programm to the /public/index.php file and check if things work.
-10. For WAMP/XAMP edit the httpd.conf file and add the following:
+10. For WAMP/XAMP edit the conf/etc/httpd-vhost.conf file and add the following:
 ```
 <VirtualHost *:80>
   ServerAdmin ServerName mia.ca-dev.nl
