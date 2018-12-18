@@ -2,15 +2,15 @@
 
 CREATE TABLE roles (
   id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-  name character varying(255),
+  name varchar(255),
   CONSTRAINT roles_pk PRIMARY KEY (id)
 );
 
 CREATE TABLE users (
   id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-  firstname character varying(255) NOT NULL,
-  lastname character varying(255) NOT NULL,
-  class character varying(10) NOT NULL,
+  firstname varchar(255) NOT NULL,
+  lastname varchar(255) NOT NULL,
+  class varchar(10) NOT NULL,
   date_of_birth date,
   role_id integer UNSIGNED,
   CONSTRAINT users_pk PRIMARY KEY (id),
@@ -21,7 +21,7 @@ CREATE TABLE users (
 
 CREATE TABLE educations (
   id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-  name character varying(255) NOT NULL,
+  name varchar(255) NOT NULL,
   CONSTRAINT educations_pk PRIMARY KEY (id)
 );
 
@@ -40,7 +40,7 @@ CREATE TABLE user_educations (
 
 CREATE TABLE courses (
   id integer UNSIGNED NOT NULL AUTO_INCREMENT,
-  name character varying(255) NOT NULL,
+  name varchar(255) NOT NULL,
   CONSTRAINT courses_pk PRIMARY KEY (id)
 );
 
