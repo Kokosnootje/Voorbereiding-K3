@@ -19,7 +19,8 @@
   ServerName mia.ca-dev.nl
 </VirtualHost>
 ```
-11. Surf to the URL http://mia.ca-dev.nl - This should be your application
+11. Verander de C:/wamp/www/.... naar de locatie van de GIT. Laat de public/ aan het einde staan!
+12. Surf to the URL http://mia.ca-dev.nl - This should be your application
 
 To see if your installation works you can check if the usage is the same as on the test website: https://kerntaak3.tcr.mncr.nl
 
