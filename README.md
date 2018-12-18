@@ -14,7 +14,7 @@
 10. For WAMP/XAMP edit the conf/etc/httpd-vhost.conf file and add the following:
 ```
 <VirtualHost *:80>
-  ServerAdmin ServerName mia.ca-dev.nl
+  ServerName mia.ca-dev.nl
   DocumentRoot "C:/wamp/www/<project-naam>/public"
   ServerName mia.ca-dev.nl
 </VirtualHost>
