@@ -4,12 +4,23 @@
 
 1. Download or clone the git installation
 2. Setup an own database (name, user and password)
-3. Edit the file in /lib/DatabaseSettings.php
-4. Change/ add the name/user/password
-5. Open the database in an application of your choice (phpmyadmin/ sequel pro or e.d.)
-6. Open the file /sql/database_init.sql 
-7. Copy and paste the information into the database to have a first set ready.
-8. Point your webserver/ programm to the /public/index.php file and check if things work.
+3. Copy the file /lib/DatabaseSettings.example.php to /lib/DatabaseSettings.php
+4. Alter the /lib/DatabaseSettings.php with the correct username, password and database
+5. Change/ add the name/user/password
+6. Open the database in an application of your choice (phpmyadmin/ sequel pro or e.d.)
+7. Open the file /sql/database_init.sql 
+8. Copy and paste the information into the database to have a first set ready.
+9. Point your webserver/ programm to the /public/index.php file and check if things work.
+10. For WAMP/XAMP edit the conf/etc/httpd-vhost.conf file and add the following:
+```
+<VirtualHost *:80>
+  ServerName mia.ca-dev.nl
+  DocumentRoot "C:/wamp/www/<project-naam>/public"
+  ServerName mia.ca-dev.nl
+</VirtualHost>
+```
+11. Verander de C:/wamp/www/.... naar de locatie van de GIT. Laat de public/ aan het einde staan!
+12. Surf to the URL http://mia.ca-dev.nl - This should be your application
 
 To see if your installation works you can check if the usage is the same as on the test website: https://kerntaak3.tcr.mncr.nl
 
