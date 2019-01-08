@@ -63,4 +63,11 @@ class GradeController extends Controller {
 
         return Redirect('/?page=grade');
     }
+
+    function edit() {
+        $usgID = $_GET['id'];
+        $usg = UserCourseGrade::find($usgID);
+
+        $this->showTemplate('grade.edit', compact('usg'));
+    }
 }
