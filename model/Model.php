@@ -166,6 +166,12 @@ class Model
         return $retData;
     }
 
+    public function delete() {
+        $qry = 'DELETE FROM '.$this->getTable().' WHERE id = '.$this->id;
+
+        return $this->getDB()->query($qry);
+    }
+
     public static function childClass() {
         return get_called_class();
     }

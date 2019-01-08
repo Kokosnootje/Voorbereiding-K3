@@ -70,4 +70,14 @@ class GradeController extends Controller {
 
         $this->showTemplate('grade.edit', compact('usg'));
     }
+
+    function delete() {
+        $id = $_GET['id'];
+        $usg = UserCourseGrade::find($id);
+        $usg->delete();
+
+        StoreMessage(['danger', 'Cijfer is gewist']);
+
+        return Redirect('/?page=grade');
+    }
 }
