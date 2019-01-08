@@ -21,6 +21,7 @@
             <th>Vak</th>
             <th>Datum</th>
             <th>Cijfer</th>
+            <th>Actie</th>
         </tr>
         </thead>
         <tbody>
@@ -29,6 +30,9 @@
                 <td><?= $ucg->course()->name ?></td>
                 <td><?= $ucg->grade_date ?></td>
                 <td><?= $ucg->grade ?></td>
+                <td>
+                    <a href="#" class="btn btn-outline-primary btn-sm"> Bewerk </a>
+                </td>
             </tr>
         <?php } ?>
         </tbody>
