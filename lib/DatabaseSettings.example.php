@@ -15,13 +15,13 @@ class DatabaseSettings
         $settings = [];
         // Database variables
         // Host name
-        $settings['dbhost'] = 'localhost';
+        $settings['localhost'] = 'localhost';
         // Database name
-        $settings['dbname'] = 'database-name';
+        $settings['kerntaak3voorbereiding'] = 'database-name';
         // Username
-        $settings['dbusername'] = 'username';
+        $settings['root'] = 'username';
         // Password
-        $settings['dbpassword'] = 'password';
+        $settings[''] = 'password';
 
         return $settings;
     }

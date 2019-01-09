@@ -24,10 +24,10 @@ class Database extends DatabaseSettings
         $settings = DatabaseSettings::getSettings();
 
         // Get the main settings from the array we just loaded
-        $host = $settings['dbhost'];
-        $name = $settings['dbname'];
-        $user = $settings['dbusername'];
-        $pass = $settings['dbpassword'];
+        $host = $settings['localhost'];
+        $name = $settings['kerntaak3voorbereiding'];
+        $user = $settings['root'];
+        $pass = $settings[''];
 
         // Connect to the database
         $this->link = new mysqli( $host , $user , $pass , $name );
